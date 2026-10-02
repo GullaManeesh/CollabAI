@@ -42,8 +42,8 @@ const Register = () => {
   }
 
   return (
-    <div className="h-screen w-screen flex items-center justify-center bg-[#F8F8F6] p-4 font-sans select-none selection:bg-zinc-200 selection:text-zinc-900">
-      <div className="w-full max-w-md bg-white border border-[#E4E4E0] rounded-2xl p-8 shadow-xl">
+    <div className="min-h-screen w-full overflow-y-auto flex items-center justify-center bg-[#F8F8F6] px-4 py-8 sm:p-6 font-sans select-none selection:bg-zinc-200 selection:text-zinc-900">
+      <div className="w-full max-w-md bg-white border border-[#E4E4E0] rounded-2xl p-5 sm:p-8 shadow-xl">
         {/* Brand Header */}
         <div className="flex flex-col items-center mb-8">
           <div className="w-11 h-11 rounded-xl bg-[#18181B] flex items-center justify-center text-white mb-3 shadow-xs">
@@ -71,7 +71,7 @@ const Register = () => {
                 required
                 value={name}
                 onChange={(e) => setName(e.target.value)}
-                placeholder="Gowtham"
+                placeholder="Your name"
                 className="w-full bg-[#F8F8F6] border border-[#E4E4E0] text-[#18181B] text-sm pl-10 pr-4 py-2.5 rounded-xl focus:bg-white focus:outline-none focus:ring-2 focus:ring-[#18181B]/10 focus:border-[#18181B] transition-all placeholder:text-[#A1A1AA]"
               />
             </div>
