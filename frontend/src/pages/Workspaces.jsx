@@ -45,7 +45,7 @@ const Workspaces = () => {
   }
 
   return (
-    <div className="min-h-screen w-screen bg-[#F8F8F6] text-[#18181B] p-6 sm:p-10 font-sans overflow-y-auto selection:bg-zinc-200 selection:text-zinc-900">
+    <div className="min-h-screen w-full bg-[#F8F8F6] text-[#18181B] p-4 sm:p-10 font-sans overflow-y-auto selection:bg-zinc-200 selection:text-zinc-900">
       {/* Top Header */}
       <header className="max-w-6xl mx-auto flex items-center justify-between border-b border-[#E4E4E0] pb-6 mb-8 select-none">
         <div className="flex items-center space-x-3.5">

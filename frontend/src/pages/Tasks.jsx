@@ -135,7 +135,7 @@ const Tasks = () => {
   }
 
   return (
-    <div className="absolute inset-0 flex flex-col bg-[#F8F8F6] text-[#18181B] h-full p-6 sm:p-8 overflow-hidden select-none">
+    <div className="absolute inset-0 flex flex-col bg-[#F8F8F6] text-[#18181B] h-full p-4 sm:p-8 overflow-y-auto select-none">
       {/* Header */}
       <div className="flex items-center justify-between mb-6 shrink-0">
         <div>
@@ -190,7 +190,7 @@ const Tasks = () => {
         </div>
       ) : (
         /* Kanban Columns */
-        <div className="flex-grow grid grid-cols-1 md:grid-cols-3 gap-5 overflow-hidden h-full">
+        <div className="flex-grow grid grid-cols-1 md:grid-cols-3 gap-5 min-h-[28rem] md:min-h-0 overflow-visible md:overflow-hidden h-full">
           {columns.map((col) => {
             const colTasks = getTasksForColumn(col.id)
             return (

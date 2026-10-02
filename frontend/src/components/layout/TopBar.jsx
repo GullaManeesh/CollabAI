@@ -1,9 +1,9 @@
 import React from 'react'
 import { useParams } from 'react-router-dom'
-import { Wifi, WifiOff, Users, Sparkles, ChevronRight, Layers } from 'lucide-react'
+import { Users, ChevronRight, Layers, Menu } from 'lucide-react'
 import { useWorkspace } from '../../context/WorkspaceContext'
 
-const TopBar = ({ wsStatus, onlineCount }) => {
+const TopBar = ({ wsStatus, onlineCount, onMenuClick }) => {
   const { workspace } = useWorkspace()
 
   const getStatusBadge = () => {
@@ -37,14 +37,17 @@ const TopBar = ({ wsStatus, onlineCount }) => {
   }
 
   return (
-    <header className="h-14 bg-white/95 backdrop-blur-md border-b border-[#E4E4E0] flex items-center justify-between px-6 select-none text-[#18181B] shrink-0 z-10">
+    <header className="h-14 bg-white/95 backdrop-blur-md border-b border-[#E4E4E0] flex items-center justify-between px-3 sm:px-6 select-none text-[#18181B] shrink-0 z-10">
       {/* Brand & Workspace Path */}
       <div className="flex items-center space-x-2.5 min-w-0">
+        <button onClick={onMenuClick} className="md:hidden p-2 -ml-1 rounded-lg text-[#52525B] hover:bg-[#F4F4F2]" aria-label="Open navigation">
+          <Menu className="h-5 w-5" />
+        </button>
         <div className="flex items-center space-x-2">
           <div className="w-7 h-7 rounded-lg bg-[#18181B] flex items-center justify-center text-white shadow-xs">
             <Layers className="w-3.5 h-3.5" />
           </div>
-          <span className="font-display font-bold text-sm tracking-tight text-[#18181B]">
+          <span className="hidden sm:inline font-display font-bold text-sm tracking-tight text-[#18181B]">
             CollabAI
           </span>
         </div>
@@ -65,7 +68,7 @@ const TopBar = ({ wsStatus, onlineCount }) => {
       <div className="flex items-center space-x-2.5 sm:space-x-3">
         {/* Presence Indicator */}
         {workspace && (
-          <div className="flex items-center space-x-1.5 text-[#52525B] bg-[#F8F8F6] border border-[#E4E4E0] text-xs font-medium py-1 px-2.5 rounded-full shadow-xs">
+          <div className="hidden sm:flex items-center space-x-1.5 text-[#52525B] bg-[#F8F8F6] border border-[#E4E4E0] text-xs font-medium py-1 px-2.5 rounded-full shadow-xs">
             <Users className="w-3.5 h-3.5 text-[#71717A]" />
             <span>
               {onlineCount} {onlineCount === 1 ? 'member' : 'members'}

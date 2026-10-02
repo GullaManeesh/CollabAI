@@ -144,7 +144,7 @@ const Documents = () => {
   }
 
   return (
-    <div className="absolute inset-0 flex bg-[#F8F8F6] text-[#18181B] h-full overflow-hidden select-none">
+    <div className="absolute inset-0 flex relative bg-[#F8F8F6] text-[#18181B] h-full overflow-hidden select-none">
       {/* Left documents view */}
       <div className="flex-1 flex flex-col p-6 sm:p-8 overflow-y-auto">
         <div className="mb-6">
@@ -265,7 +265,7 @@ const Documents = () => {
             animate={{ opacity: 1, x: 0 }}
             exit={{ opacity: 0, x: 20 }}
             transition={{ duration: 0.15 }}
-            className="w-84 bg-white border-l border-[#E4E4E0] flex flex-col h-full overflow-y-auto shadow-lg z-10"
+            className="absolute inset-0 sm:static sm:w-[21rem] bg-white border-l border-[#E4E4E0] flex flex-col h-full overflow-y-auto shadow-lg z-10"
           >
             {/* Header */}
             <div className="p-4 border-b border-[#E4E4E0] flex items-center justify-between">

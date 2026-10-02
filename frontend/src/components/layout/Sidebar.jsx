@@ -4,7 +4,7 @@ import { MessageSquare, Bot, FileText, CheckSquare, Settings as SettingsIcon, Lo
 import { useWorkspace } from '../../context/WorkspaceContext'
 import { useAuth } from '../../context/AuthContext'
 
-const Sidebar = () => {
+const Sidebar = ({ isOpen = false, onClose = () => {} }) => {
   const { id } = useParams()
   const navigate = useNavigate()
   const { workspace, workspaces, selectWorkspace } = useWorkspace()
@@ -32,7 +32,9 @@ const Sidebar = () => {
   }
 
   return (
-    <aside className="w-64 bg-white border-r border-[#E4E4E0] flex flex-col text-[#18181B] h-screen overflow-hidden select-none shrink-0 shadow-xs">
+    <>
+    <button aria-label="Close navigation" onClick={onClose} className={`fixed inset-0 z-30 bg-[#18181B]/20 md:hidden transition-opacity ${isOpen ? 'opacity-100' : 'pointer-events-none opacity-0'}`} />
+    <aside className={`fixed inset-y-0 left-0 z-40 w-[min(18rem,calc(100vw-2rem))] bg-white border-r border-[#E4E4E0] flex flex-col text-[#18181B] h-dvh overflow-hidden select-none shadow-lg transition-transform duration-200 md:static md:z-auto md:w-64 md:translate-x-0 md:shadow-xs ${isOpen ? 'translate-x-0' : '-translate-x-full'}`}>
       {/* Workspace Selector Header */}
       <div className="p-4 border-b border-[#E4E4E0]">
         <div className="flex items-center justify-between mb-2">
@@ -70,6 +72,7 @@ const Sidebar = () => {
             <NavLink
               key={item.name}
               to={item.path}
+              onClick={onClose}
               className={({ isActive }) => 
                 `flex items-center space-x-3 px-3 py-2 rounded-xl text-xs font-semibold transition-all group ${
                   isActive 
@@ -90,7 +93,7 @@ const Sidebar = () => {
                   <span className="flex-1 truncate">{item.name}</span>
                   {item.isAgent && (
                     <span className={`text-[10px] font-medium tracking-wide uppercase px-1.5 py-0.2 rounded font-mono ${
-                      isActive ? 'bg-white/20 text-white' : 'bg-[#F4F4F2] text-[#52525B]'
+                      isActive ? 'bg-[#D3E3D6] text-[#365742]' : 'bg-[#F4F4F2] text-[#52525B]'
                     }`}>
                       AI
                     </span>
@@ -152,6 +155,7 @@ const Sidebar = () => {
         </div>
       </div>
     </aside>
+    </>
   )
 }
 

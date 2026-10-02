@@ -16,6 +16,7 @@ const WorkspaceLayout = () => {
   const [onlineUserIds, setOnlineUserIds] = useState([])
   const [typingUsers, setTypingUsers] = useState({}) // { user_id: { channel_id, user_name } }
   const [wsMessages, setWsMessages] = useState([])
+  const [mobileNavOpen, setMobileNavOpen] = useState(false)
   
   // Ref to clear typing timeouts
   const typingTimeoutsRef = useRef({})
@@ -122,14 +123,14 @@ const WorkspaceLayout = () => {
   }
 
   return (
-    <div className="flex h-screen w-screen overflow-hidden bg-ink text-paper">
+    <div className="flex h-dvh w-full overflow-hidden bg-ink text-paper">
       {/* Sidebar - Pinned LEFT */}
-      <Sidebar />
+      <Sidebar isOpen={mobileNavOpen} onClose={() => setMobileNavOpen(false)} />
 
       {/* Main Workspace Frame */}
-      <div className="flex-1 flex flex-col min-w-0 h-screen overflow-hidden">
+      <div className="flex-1 flex flex-col min-w-0 h-dvh overflow-hidden">
         {/* TopBar - Header */}
-        <TopBar wsStatus={wsStatus} onlineCount={onlineUserIds.length || 1} />
+        <TopBar wsStatus={wsStatus} onlineCount={onlineUserIds.length || 1} onMenuClick={() => setMobileNavOpen(true)} />
 
         {/* Dynamic page container */}
         <main className="flex-grow min-h-0 relative">

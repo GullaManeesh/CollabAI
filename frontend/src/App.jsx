@@ -19,7 +19,7 @@ const ProtectedRoute = ({ children }) => {
   
   if (loading) {
     return (
-      <div className="h-screen w-screen bg-slate-50 flex items-center justify-center flex-col space-y-3">
+      <div className="min-h-dvh w-full bg-slate-50 flex items-center justify-center flex-col space-y-3">
         <div className="w-9 h-9 border-3 border-slate-200 border-t-blue-600 rounded-full animate-spin"></div>
         <div className="text-slate-500 text-xs font-medium tracking-wide">Verifying session...</div>
       </div>
