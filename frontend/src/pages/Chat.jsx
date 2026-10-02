@@ -17,14 +17,22 @@ const mergeIncomingMessages = (currentMessages, incomingMessages) => {
     const existingIndex = next.findIndex((existing) => existing.id === message.id)
     if (existingIndex >= 0) return
 
-    const matchingIndex = next.findIndex((existing) => (
-      String(existing.sender_id) === String(message.sender_id) &&
-      existing.sender_type === message.sender_type &&
-      existing.content === message.content &&
-      (String(existing.id).startsWith('local-') || String(message.id).startsWith('local-'))
-    ))
+    const matchingIndex = next.findIndex((existing) => {
+      if (
+        String(existing.sender_id) !== String(message.sender_id) ||
+        existing.sender_type !== message.sender_type ||
+        existing.content !== message.content
+      ) return false
+
+      const existingTime = new Date(existing.created_at).getTime()
+      const messageTime = new Date(message.created_at).getTime()
+      return Number.isFinite(existingTime) && Number.isFinite(messageTime)
+        && Math.abs(existingTime - messageTime) <= 10000
+    })
     if (matchingIndex >= 0) {
-      if (!String(message.id).startsWith('local-')) {
+      const existingIsLocal = String(next[matchingIndex].id).startsWith('local-')
+      const messageIsLocal = String(message.id).startsWith('local-')
+      if (existingIsLocal && !messageIsLocal) {
         next[matchingIndex] = message
       }
       return
@@ -83,7 +91,7 @@ const Chat = () => {
     setLoading(true)
     try {
       const response = await client.get(`/channels/${channelId}/messages?limit=50`)
-      setMessages(response.data.messages)
+      setMessages(mergeIncomingMessages([], response.data.messages))
       setHasMore(response.data.has_more)
       setTimeout(scrollToBottom, 50)
     } catch (err) {
