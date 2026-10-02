@@ -1,0 +1,291 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  body {
+    background-color: #F8F8F6;
+    color: #18181B;
+    font-family: 'Plus Jakarta Sans', Inter, -apple-system, BlinkMacSystemFont, sans-serif;
+  }
+  
+  h1, h2, h3, h4, h5, h6 {
+    font-family: 'Plus Jakarta Sans', Inter, sans-serif;
+    letter-spacing: -0.025em;
+    color: #18181B;
+  }
+
+  code, pre {
+    font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  }
+
+  :focus-visible {
+    outline: none;
+    box-shadow: 0 0 0 2px #FFFFFF, 0 0 0 4px #18181B;
+  }
+}
+
+/* Custom sleek minimal scrollbars */
+::-webkit-scrollbar {
+  width: 5px;
+  height: 5px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #D4D4D8;
+  border-radius: 9999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #A1A1AA;
+}
+
+/* Reusable Minimal UI Utility Classes */
+.btn-primary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #FFFFFF;
+  background-color: #18181B;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 13px;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+}
+.btn-primary:hover {
+  background-color: #27272A;
+}
+.btn-primary:active {
+  transform: scale(0.98);
+}
+.btn-primary:disabled {
+  opacity: 0.4;
+  pointer-events: none;
+}
+
+.btn-secondary {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  color: #18181B;
+  background-color: #FFFFFF;
+  border: 1px solid #E4E4E7;
+  border-radius: 12px;
+  padding: 8px 16px;
+  font-size: 13px;
+  transition: all 0.15s ease;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.02);
+}
+.btn-secondary:hover {
+  background-color: #F4F4F5;
+  border-color: #D4D4D8;
+}
+.btn-secondary:active {
+  transform: scale(0.98);
+}
+
+.card-minimal {
+  background-color: #FFFFFF;
+  border: 1px solid #E4E4E7;
+  border-radius: 16px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.03);
+  transition: all 0.18s ease;
+}
+.card-minimal:hover {
+  border-color: #D4D4D8;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+/* Agent Markdown formatting - Crisp, high-readability typography */
+.chat-markdown {
+  font-size: 14px;
+  line-height: 1.65;
+  color: #27272A;
+}
+
+.chat-markdown h1,
+.chat-markdown h2,
+.chat-markdown h3,
+.chat-markdown h4 {
+  font-weight: 700;
+  color: #18181B;
+  margin-top: 1.25rem;
+  margin-bottom: 0.5rem;
+  letter-spacing: -0.02em;
+}
+
+.chat-markdown h1 { font-size: 1.15rem; }
+.chat-markdown h2 { font-size: 1.05rem; }
+.chat-markdown h3 { font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.05em; color: #52525B; }
+
+.chat-markdown p {
+  margin-bottom: 0.75rem;
+  color: #27272A;
+}
+
+.chat-markdown p:last-child {
+  margin-bottom: 0;
+}
+
+.chat-markdown ul {
+  list-style-type: disc;
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  space-y: 0.25rem;
+}
+
+.chat-markdown ol {
+  list-style-type: decimal;
+  padding-left: 1.25rem;
+  margin-bottom: 0.75rem;
+  space-y: 0.25rem;
+}
+
+.chat-markdown li {
+  margin-bottom: 0.25rem;
+  color: #27272A;
+}
+
+.chat-markdown strong {
+  font-weight: 700;
+  color: #18181B;
+}
+
+.chat-markdown em {
+  font-style: italic;
+  color: #3F3F46;
+}
+
+.chat-markdown code {
+  font-family: 'JetBrains Mono', 'IBM Plex Mono', monospace;
+  font-size: 0.85em;
+  background-color: #F4F4F5;
+  color: #18181B;
+  padding: 0.15rem 0.4rem;
+  border-radius: 6px;
+  border: 1px solid #E4E4E7;
+}
+
+.chat-markdown pre {
+  margin-top: 0.85rem;
+  margin-bottom: 0.85rem;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #27272A;
+  background-color: #18181B;
+  padding: 1rem;
+  font-size: 12px;
+  line-height: 1.6;
+  color: #F4F4F5;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+}
+
+.chat-markdown pre code {
+  background-color: transparent;
+  color: #F4F4F5;
+  padding: 0;
+  border: none;
+  font-size: inherit;
+}
+
+/* Syntax Highlighting (Monochrome / Muted Neutral) */
+.chat-markdown .hljs-comment,
+.chat-markdown .hljs-quote { color: #71717A; font-style: italic; }
+.chat-markdown .hljs-keyword,
+.chat-markdown .hljs-selector-tag { color: #E4E4E7; font-weight: 600; }
+.chat-markdown .hljs-string,
+.chat-markdown .hljs-attr { color: #A1A1AA; }
+.chat-markdown .hljs-number,
+.chat-markdown .hljs-literal { color: #D4D4D8; }
+.chat-markdown .hljs-title,
+.chat-markdown .hljs-name { color: #FAFAFA; font-weight: 600; }
+
+.chat-markdown blockquote {
+  margin: 0.85rem 0;
+  border-left: 3px solid #71717A;
+  padding-left: 1rem;
+  font-style: italic;
+  color: #52525B;
+  background-color: #F4F4F5;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  border-radius: 0 8px 8px 0;
+}
+
+.chat-markdown a {
+  color: #18181B;
+  font-weight: 600;
+  text-decoration: underline;
+  text-underline-offset: 2px;
+  transition: color 0.15s ease;
+}
+.chat-markdown a:hover {
+  color: #71717A;
+}
+
+/* Tables in Markdown */
+.chat-markdown-table-wrap {
+  margin: 1rem 0;
+  width: 100%;
+  overflow-x: auto;
+  border-radius: 12px;
+  border: 1px solid #E4E4E7;
+  background-color: #FFFFFF;
+}
+
+.chat-markdown-table-wrap table {
+  width: 100%;
+  min-width: 480px;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: 12px;
+}
+
+.chat-markdown-th {
+  border-bottom: 1px solid #E4E4E7;
+  background-color: #F4F4F5;
+  padding: 8px 12px;
+  font-weight: 700;
+  color: #18181B;
+  text-transform: uppercase;
+  font-size: 11px;
+  letter-spacing: 0.04em;
+}
+
+.chat-markdown-td {
+  border-bottom: 1px solid #F4F4F5;
+  padding: 8px 12px;
+  vertical-align: top;
+  color: #27272A;
+}
+
+.chat-markdown tr:last-child .chat-markdown-td {
+  border-bottom: none;
+}
+
+.chat-markdown tr:hover .chat-markdown-td {
+  background-color: #FAFAFA;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
